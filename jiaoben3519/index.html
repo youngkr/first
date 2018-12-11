@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>jQuery鼠标滚轮滑动到页面节点部分 - 站长素材</title>
+<!--[if lt IE 9]>
+<script src="html5shiv.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<section class="panel home" data-section-name="home">
+			<div class="inner">
+				<header>
+					<h1></h1>
+					<p class="tagline">适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.<br><br>不支持IE8及以下浏览器。<br><br><br>来源：站长素材</p>
+				</header>
+				<div style="text-algin:center;margin:10px auto"><script src="/js/ad_js/bd_76090.js" type="text/javascript"></script></div><br/>
+				<a href="#overview" class="scroll">滑动鼠标滚轮</a>
+				
+			</div>
+		</section>
+		<section class="panel overview" data-section-name="overview">
+			<div class="inner">
+				<h2>基本使用</h2>
+				<p>需要引入 jQuery 1.6+ 以及缓冲动画插件jquery.easing.js.</p>
+				<pre>
+	&lt;! doctype html&gt;
+	&lt;html&gt;
+		&lt;head&gt;
+			&lt;script&gt;
+				$(function() {
+					$.scrollify({
+						section : "section",
+					});
+				});
+			&lt;/script&gt;
+		&lt;/head&gt;
+		&lt;body&gt;
+			&lt;section&gt;&lt;/section&gt;
+			&lt;section&gt;&lt;/section&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+				</pre>
+
+			</div>
+		</section>
+		<section class="panel configuration" data-section-name="configuration">
+			<div class="inner">
+			<h2>配置</h2>
+				<pre>
+	$.scrollify({
+		section : "section",
+		sectionName : "section-name",
+		easing: "easeOutExpo",
+		scrollSpeed: 1100,
+		offset : 0,
+		scrollbars: true,
+		before:function() {},
+		after:function() {}
+	});
+				</pre>
+			</div>
+		</section>
+		<section class="panel options" data-section-name="options">
+			<div class="inner">
+				<h2>选项设置</h2>
+				<dl>
+					<dt>section</dt>
+					<dd>节点部分选择器.</dd>
+					<dt>sectionName</dt>
+					<dd>每一个section节点对应的data属性.</dd>
+					<dt>easing</dt>
+					<dd>定义缓冲动画.</dd>
+					<dt>offset</dt>
+					<dd>定义每个色彩tion节点的偏移量.</dd>
+					<dt>scrollbars</dt>
+					<dd>是否显示滚动条.</dd>
+					<dt>before</dt>
+					<dd>回调函数,滚动开始前触发.</dd>
+					<dt>after</dt>
+					<dd>回调函数,滚动完成后触发.</dd>
+				</dl>
+			</div>
+		</section>
+		<section class="panel methods" data-section-name="methods">
+			<div class="inner">
+				<h2>方法</h2>
+				<p>滑动到指定的节点。</p>
+				<pre>
+	$.scrollify("move","#name");
+				</pre>
+				<div style="text-algin:center;margin:10px auto"><script src="/js/ad_js/bd_76090.js" type="text/javascript"></script></div><br/>
+			</div>
+		</section>
+		
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.scrollify.min.js"></script>
+<script>
+$(function() {
+	
+	$(".panel").css({"height":$(window).height()});
+	var timer;
+
+	$(window).resize(function() {
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			$(".panel").css({"height":$(window).height()});
+		},40);
+	});
+
+	$.scrollify({
+		section:".panel"
+	});
+	
+
+	$(".scroll").click(function(e) {
+		e.preventDefault();
+		$.scrollify("move",$(this).attr("href"));
+	});
+});
+</script>
+
+</body>
+</html>
